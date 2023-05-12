@@ -1,0 +1,15 @@
+.ChildPageOne {
+  opacity: 1;
+
+  .ChildPageOne--entering {
+    opacity: 0;
+  }
+
+  .ChildPageOne--entered {
+    opacity: 1;
+  }
+
+  .ChildPageOne--exited {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,30 @@
+body {
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+nav {
+  padding: 3px;
+  margin-bottom: 24px;
+  background: #eee;
+  text-align: center;
+}
+.nav-item {
+  width: 30%;
+  text-align: center;
+  background-color: #eee;
+  display: inline-block;
+}
+a {
+  color: #000;
+  line-height: 32px;
+  text-decoration: none;
+}
+a.active {
+  background: #fff;
+  font-weight: 500;
+}
+
+.Templates {
+
+}

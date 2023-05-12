@@ -1,0 +1,15 @@
+.Main {
+  opacity: 1;
+
+  .Main--entering {
+    opacity: 0;
+  }
+
+  .Main--entered {
+    opacity: 1;
+  }
+
+  .Main--exited {
+    opacity: 0;
+  }
+}
