@@ -29,9 +29,6 @@ export const MainLayout: React.FC<MainLayoutProps> = (
   const { children } = props;
   return (
     <>
-      <div>
-        <p>アニメーションしない部分</p>
-      </div>
       <motion.div
         initial={pageVariants.initial}
         animate={pageVariants.in}

@@ -14,6 +14,11 @@
   -webkit-text-size-adjust: 100%;
 }
 
+@font-face {
+  font-family: 'Marcellus';
+  src: url(../static/font/Marcellus/Marcellus-Regular.woff2) format("woff");
+}
+
 a {
   font-weight: 500;
   color: #646cff;
