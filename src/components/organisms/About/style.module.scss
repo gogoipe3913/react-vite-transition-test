@@ -1,0 +1,22 @@
+@import "../../../style/variables.scss";
+
+.About {
+  padding: 28% 48px;
+  width: 100%;
+  font-family: "Shippori Mincho";
+  color: $font-color-blue;
+  text-align: center;
+
+  .About__text {
+    font-size: 16px;
+    line-height: 2.6em;
+    letter-spacing: 0.16em;
+  }
+
+  .About__textEnglish {
+    margin-top: 56px;
+    font-size: 13px;
+    line-height: 2.2em;
+    letter-spacing: 0.05em;
+  }
+}
