@@ -1,31 +1,71 @@
 @import "../../../style/variables.scss";
 
 .Top {
-  width: 100vw;
+  padding: 48px;
+  width: 100%;
   height: 100vh;
+  font-family: "Marcellus";
 
   .Top__videoWrapper {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     display: flex;
     justify-content: center;
+    height: 100%;
+  }
+
+  .Top__videoFrame {
     width: 32%;
-    height: calc(100% - 100px);
     overflow: hidden;
   }
 
-  .Top__movie {
-    width: 36vw;
+  .Top__video {
+    height: 100%;
+  }
+
+  .Top__titleBox {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
   }
 
   .Top__title {
     transform: scaleX(-1);
     font-size: 64px;
-    font-family: Marcellus;
-    letter-spacing: 0.3em;
     color: $font-color-blue;
+    letter-spacing: 0.3em;
+    text-align: center;
+    mix-blend-mode: soft-light;
+  }
+
+  .Top__subTitle {
+    font-size: 16px;
+    color: $font-color-white;
+    letter-spacing: 0.3em;
+    text-align: center;
+  }
+
+  .Top__scrollIndicator {
+    position: absolute;
+    right: -28px;
+    bottom: 72px;
+    width: fit-content;
+    font-size: 18px;
+    color: $font-color-red;
+    letter-spacing: 0.03em;
+    transform: rotate(90deg);
+
+    &::after {
+      content: "";
+      display: inline-block;
+      margin-left: 8px;
+      width: 120px;
+      height: 1px;
+      background-color: $font-color-red;
+    }
   }
 }
