@@ -6,6 +6,7 @@ import ChildPageTwo from "../organisms/childPageTwo";
 import MainLayout from "../organisms/MainLayout";
 import Top from "../organisms/Top";
 import About from "../organisms/About";
+import LookBack from "../organisms/LookBack";
 
 const Templates: React.FC = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const Templates: React.FC = () => {
                 <>
                   <Top />
                   <About />
+                  <LookBack />
                 </>
               </MainLayout>
             }

@@ -1,0 +1,70 @@
+@import "../../../style/variables";
+
+.LookBack {
+  padding-left: 100px;
+  display: flex;
+  font-family: "Marcellus";
+  color: $font-color-blue;
+  transition-duration: 0.3s;
+
+  .LookBack__sideColumn {
+    flex-shrink: 0;
+  }
+
+  .LookBack__sortItems {
+    margin-top: 400px;
+    line-height: 2em;
+  }
+
+  .LookBack__sortButton {
+    color: $font-color-red;
+  }
+
+  .LookBack__mainColumn {
+    margin-left: 160px;
+  }
+
+  .LookBack__items {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .LookBack__item {
+    margin-right: 80px;
+    margin-bottom: 80px;
+  }
+
+  .LookBack__itemButton {
+    color: $font-color-blue;
+  }
+
+  .LookBack__itemButton {
+    position: relative;
+    display: flex;
+  }
+
+  .LookBack__itemTitle {
+    position: absolute;
+    top: 0;
+    display: flex;
+    letter-spacing: 0.04em;
+    transform: rotate(90deg);
+    transform-origin: top left;
+  }
+
+  .LookBack__itemTitleText {
+    flex-shrink: 0;
+  }
+
+  .LookBack__itemTitleMonth {
+    margin-left: 24px;
+    font-size: 13px;
+  }
+
+  .LookBack__itemImage {
+    margin-left: 24px;
+    width: 200px;
+  }
+}
