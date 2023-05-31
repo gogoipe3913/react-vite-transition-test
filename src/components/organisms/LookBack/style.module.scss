@@ -9,6 +9,7 @@
 
   .LookBack__sideColumn {
     flex-shrink: 0;
+    min-width: 120px;
   }
 
   .LookBack__sortItems {
@@ -18,6 +19,27 @@
 
   .LookBack__sortButton {
     color: $font-color-red;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.86, 0, 0.79, 0);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 0px;
+      height: 1px;
+      background-color: $font-color-blue;
+      transition-duration: 0.3s;
+      transition-timing-function: cubic-bezier(0.86, 0, 0.79, 0);
+    }
+
+    &:hover {
+      color: $font-color-blue;
+
+      &::before {
+        width: 32px;
+        margin-right: 8px;
+      }
+    }
   }
 
   .LookBack__mainColumn {
@@ -43,15 +65,41 @@
   .LookBack__itemButton {
     position: relative;
     display: flex;
+
+    &:hover {
+      .LookBack__itemTitle {
+        color: $font-color-red;
+
+        &::before {
+          width: 32px;
+          margin-right: 8px;
+          background-color: $font-color-red;
+        }
+      }
+    }
   }
 
   .LookBack__itemTitle {
     position: absolute;
     top: 0;
     display: flex;
+    align-items: baseline;
+    min-width: 400px;
     letter-spacing: 0.04em;
     transform: rotate(90deg);
     transform-origin: top left;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0.86, 0, 0.79, 0);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 0px;
+      height: 1px;
+      background-color: $font-color-blue;
+      transition-duration: 0.3s;
+      transition-timing-function: cubic-bezier(0.86, 0, 0.79, 0);
+    }
   }
 
   .LookBack__itemTitleText {
