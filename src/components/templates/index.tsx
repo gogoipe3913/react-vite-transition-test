@@ -7,6 +7,7 @@ import MainLayout from "../organisms/MainLayout";
 import Top from "../organisms/Top";
 import About from "../organisms/About";
 import LookBack from "../organisms/LookBack";
+import IntervalText from "../organisms/IntervalText";
 
 const Templates: React.FC = () => {
   const location = useLocation();
@@ -23,6 +24,7 @@ const Templates: React.FC = () => {
                   <Top />
                   <About />
                   <LookBack />
+                  <IntervalText />
                 </>
               </MainLayout>
             }
