@@ -1,6 +1,8 @@
 @import "../../../style/variables.scss";
 
 .About {
+  position: relative;
+  z-index: 20;
   padding: 28% 48px;
   width: 100%;
   font-family: "Shippori Mincho";
