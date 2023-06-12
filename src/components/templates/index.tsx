@@ -8,6 +8,7 @@ import Top from "../organisms/Top";
 import About from "../organisms/About";
 import LookBack from "../organisms/LookBack";
 import IntervalText from "../organisms/IntervalText";
+import HamburgerMenu from "../organisms/HamburgerMenu";
 
 const Templates: React.FC = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ const Templates: React.FC = () => {
             element={
               <MainLayout>
                 <>
+                  <HamburgerMenu />
                   <Top />
                   <About />
                   <LookBack />
