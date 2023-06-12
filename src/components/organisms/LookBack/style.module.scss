@@ -1,5 +1,8 @@
 @import "../../../style/variables";
 
+$timing-function-text: cubic-bezier(0.86, 0, 0.79, 0);
+$timing-function-image: cubic-bezier(0.83, 0, 0.17, 1);
+
 .LookBack {
   position: relative;
   z-index: 20;
@@ -13,7 +16,7 @@
     flex-shrink: 0;
     position: sticky;
     top: 0;
-    padding-top: 52vh;
+    padding-top: 48vh;
     // sticky終了ポジションをメインカラムと合わせる
     margin-bottom: 80px;
     min-width: 120px;
@@ -28,7 +31,7 @@
   .LookBack__sortButton {
     color: $font-color-red;
     transition-duration: 0.3s;
-    transition-timing-function: cubic-bezier(0.86, 0, 0.79, 0);
+    transition-timing-function: $timing-function-text;
 
     &::before {
       content: "";
@@ -37,7 +40,7 @@
       height: 1px;
       background-color: $font-color-blue;
       transition-duration: 0.3s;
-      transition-timing-function: cubic-bezier(0.86, 0, 0.79, 0);
+      transition-timing-function: $timing-function-text;
     }
 
     &:hover {
@@ -61,32 +64,37 @@
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
+    opacity: 1;
+    transition-duration: 0.3s;
+    transition-timing-function: $timing-function-image;
+  }
+
+  .LookBack__items--exiting {
+    opacity: 0;
+  }
+
+  .LookBack__items--exited {
+    opacity: 0;
   }
 
   .LookBack__item {
     margin-right: 80px;
     margin-bottom: 80px;
+    opacity: 1;
+    transform: translateY(0px);
+    transition-duration: 0.5s;
+    transition-timing-function: $timing-function-image;
   }
 
-  .LookBack__itemButton {
-    color: $font-color-blue;
+  .LookBack__item--inactive {
+    opacity: 0;
+    transform: translateY(80%);
   }
 
-  .LookBack__itemButton {
+  .LookBack__itemContent {
     position: relative;
     display: flex;
-
-    &:hover {
-      .LookBack__itemTitle {
-        color: $font-color-white;
-
-        &::before {
-          width: 32px;
-          margin-right: 8px;
-          background-color: $font-color-white;
-        }
-      }
-    }
+    color: $font-color-blue;
   }
 
   .LookBack__itemTitle {
@@ -99,7 +107,7 @@
     transform: rotate(90deg);
     transform-origin: top left;
     transition-duration: 0.3s;
-    transition-timing-function: cubic-bezier(0.86, 0, 0.79, 0);
+    transition-timing-function: $timing-function-text;
 
     &::before {
       content: "";
@@ -108,7 +116,17 @@
       height: 1px;
       background-color: $font-color-blue;
       transition-duration: 0.3s;
-      transition-timing-function: cubic-bezier(0.86, 0, 0.79, 0);
+      transition-timing-function: $timing-function-text;
+    }
+  }
+
+  .LookBack__itemTitle--active {
+    color: $font-color-white;
+
+    &::before {
+      width: 32px;
+      margin-right: 8px;
+      background-color: $font-color-white;
     }
   }
 
@@ -121,9 +139,53 @@
     font-size: 13px;
   }
 
+  .LookBack__imageContainer {
+    position: relative;
+    width: 224px;
+    height: 660px;
+    overflow: hidden;
+  }
+
+  .LookBack__link {
+    display: block;
+  }
+
   .LookBack__itemImage {
     margin-left: 24px;
     width: 200px;
+  }
+
+  .LookBack__colorVeil {
+    position: absolute;
+    top: 0;
+    margin-left: 24px;
+    width: 200px;
+    height: 660px;
+    transition-duration: 0.5s;
+    transition-timing-function: $timing-function-image;
+  }
+
+  .LookBack__colorVeil--0 {
+    background-color: #cbcbcb;
+  }
+  .LookBack__colorVeil--1 {
+    background-color: #808080;
+  }
+  .LookBack__colorVeil--2 {
+    background-color: #cbcbcb;
+  }
+  .LookBack__colorVeil--3 {
+    background-color: #808080;
+  }
+  .LookBack__colorVeil--4 {
+    background-color: #cbcbcb;
+  }
+  .LookBack__colorVeil--5 {
+    background-color: #808080;
+  }
+
+  .LookBack__colorVeil--fadeOut {
+    transform: translateY(-100%);
   }
 }
 
@@ -139,7 +201,7 @@
   opacity: 0;
   background-image: url("../../../../static/images/lookBackPointer/white_noise.gif");
   background-size: 250px 350px;
-  transition-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+  transition-timing-function: $timing-function-image;
   transition-duration: 0.4s;
   transition-property: opacity;
   will-change: opacity;
@@ -179,7 +241,7 @@
     opacity: 0;
     background-image: url("../../../../static/images/lookBackPointer/light.png");
     background-size: cover;
-    transition-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+    transition-timing-function: $timing-function-image;
     transition-duration: 0.4s;
     transition-property: opacity, transform;
     will-change: opacity, transform;
