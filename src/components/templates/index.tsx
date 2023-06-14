@@ -9,6 +9,7 @@ import About from "../organisms/About";
 import LookBack from "../organisms/LookBack";
 import IntervalText from "../organisms/IntervalText";
 import HamburgerMenu from "../organisms/HamburgerMenu";
+// import WhatIDo from "../organisms/WhatIDo";
 
 const Templates: React.FC = () => {
   const location = useLocation();
@@ -27,6 +28,7 @@ const Templates: React.FC = () => {
                   <About />
                   <LookBack />
                   <IntervalText />
+                  {/* <WhatIDo /> */}
                 </>
               </MainLayout>
             }
