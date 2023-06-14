@@ -214,7 +214,12 @@ const LookBack: React.FC<LookBackProps> = ({ className = "" }) => {
             {lookBackSortItems.map((sortItem, index) => (
               <li key={index} className={style.LookBack__sortItem}>
                 <button
-                  className={style.LookBack__sortButton}
+                  className={classNames(
+                    style.LookBack__sortButton,
+                    sortItem.name === currentSortName
+                      ? style["LookBack__sortButton--current"]
+                      : ""
+                  )}
                   onClick={() => {
                     setCurrentSortName(sortItem.name);
                   }}

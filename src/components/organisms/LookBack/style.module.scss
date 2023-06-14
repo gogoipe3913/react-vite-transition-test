@@ -53,6 +53,15 @@ $timing-function-image: cubic-bezier(0.83, 0, 0.17, 1);
     }
   }
 
+  .LookBack__sortButton--current {
+    color: $font-color-blue;
+
+    &::before {
+      width: 32px;
+      margin-right: 8px;
+    }
+  }
+
   .LookBack__mainColumn {
     margin-left: 160px;
     // ソートカラムのsticky開始ポジションをハンバーガーメニューと合わせる
