@@ -1,4 +1,15 @@
 @import "../../../style/variables.scss";
 
 .WhatIDo {
+  padding: 0 100px;
+  width: 100%;
+  overflow: hidden;
+
+  .WhatIDo__sliderWrapper {
+    padding: 0 80px;
+  }
+
+  .WhatIDo__sliderContent {
+    padding: 0 8px;
+  }
 }
