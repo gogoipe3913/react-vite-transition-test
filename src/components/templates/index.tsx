@@ -10,6 +10,7 @@ import LookBack from "../organisms/LookBack";
 import IntervalText from "../organisms/IntervalText";
 import HamburgerMenu from "../organisms/HamburgerMenu";
 import WhatIDo from "../organisms/WhatIDo";
+import Footer from "../organisms/Footer";
 
 const Templates: React.FC = () => {
   const location = useLocation();
@@ -29,6 +30,7 @@ const Templates: React.FC = () => {
                   <LookBack />
                   <IntervalText />
                   <WhatIDo />
+                  <Footer />
                 </>
               </MainLayout>
             }
