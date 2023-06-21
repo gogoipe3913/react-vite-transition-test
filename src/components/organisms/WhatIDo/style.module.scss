@@ -38,10 +38,26 @@
   }
 
   .WhatIDo__progressBar {
+    position: relative;
     display: block;
     width: 100px;
     height: 1px;
-    background-color: $font-color-blue;
+    background-color: #dfdfdf;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      display: block;
+      height: 1px;
+      background-color: $font-color-blue;
+
+      // ここだけはkeyframeを使う
+      animation-name: progressAnimation;
+      animation-duration: 8000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
   }
 
   .WhatIDo__numbers {
@@ -66,5 +82,15 @@
     font-size: 14px;
     line-height: 2;
     letter-spacing: 0.1em;
+  }
+}
+
+@keyframes progressAnimation {
+  0% {
+    width: 0px;
+  }
+
+  100% {
+    width: 100px;
   }
 }

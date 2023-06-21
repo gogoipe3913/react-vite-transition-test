@@ -4,6 +4,7 @@ import classNames from "classnames";
 import style from "./style.module.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { slideContents } from "./data";
 
 const images = [
   {
@@ -37,7 +38,7 @@ const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
     autoplay: true,
     focusOnSelect: false,
     speed: 500,
-    autoplaySpeed: 6000,
+    autoplaySpeed: 8000,
     waitForAnimate: true,
     slidesToShow: 3,
     beforeChange(currentIndex) {
@@ -70,15 +71,11 @@ const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
         >{`0${currentSlideIndex} / 06`}</span>
       </p>
       <div className={style.WhatIDo__slideText}>
-        <p className={style.WhatIDo__slideTitle}>リソグラフを作る</p>
+        <p className={style.WhatIDo__slideTitle}>
+          {slideContents[currentSlideIndex].title}
+        </p>
         <p className={style.WhatIDo__slideContent}>
-          この場所は、自分の2022を振り返り2023年は何をするか、どうなりたいか一
-          年の区切りを使って自分を知ってもらうために制作しましたこの場所は、
-          自分の2022を振り返り2023年は何をするか、どうなりたいか一年の区切りを使って
-          自分を知ってもらうために制作しましたこの場所は、自分の2022を振り返り2023年は何をするか、どうな
-          りたいか一年の区切りを使って自分を知ってもらうために制作しましたこの場所は、自分の2022を振り返り2023年は何をするか、どうなりたいか一年の区切りを使って自分を知ってもらうために制作しましたこの場所は、自分の2022を振り返
-          り2023年は何をするか、どうなりたいか一年の区切りを使って自分を知ってもらうために制作しましたこの
-          場所は、自分の2022を振り返り2023年は何をするか、ど
+          {slideContents[currentSlideIndex].text}
         </p>
       </div>
     </div>
