@@ -32,7 +32,10 @@ type WhatIDoProps = {
 };
 
 const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [currentSlideNumber, setCurrentSlideNumber] = useState(1);
+  const [isProgress, setIsProgress] = useState(false);
+  const [isReset, setIsReset] = useState(false);
+  const sliderRef = useRef<Slider>(null);
   const settings: Settings = {
     dots: false,
     autoplay: true,
@@ -42,11 +45,29 @@ const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
     waitForAnimate: true,
     slidesToShow: 3,
     beforeChange(currentIndex) {
-      setCurrentSlideIndex(currentIndex + 1);
+      setIsReset(true);
+      setIsProgress(false);
+
+      // 表示するのは1から
+      const currentNumber = currentIndex + 2;
+
+      if (currentNumber < 7) {
+        setCurrentSlideNumber(currentNumber);
+      } else {
+        setCurrentSlideNumber(
+          currentNumber - 6 * Math.trunc(currentNumber / 6)
+        );
+      }
+    },
+    afterChange() {
+      setIsReset(false);
+      setIsProgress(true);
     },
   };
 
-  const sliderRef = useRef<Slider>(null);
+  useEffect(() => {
+    setIsProgress(true);
+  }, []);
 
   return (
     <div className={classNames(style.WhatIDo, className)}>
@@ -65,17 +86,23 @@ const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
         </Slider>
       </div>
       <p className={style.WhatIDo__currentSlideIndicator}>
-        <span className={style.WhatIDo__progressBar} />
+        <span
+          className={classNames(
+            style.WhatIDo__progressBar,
+            isProgress ? style["WhatIDo__progressBar--progress"] : "",
+            isReset ? style["WhatIDo__progressBar--reset"] : ""
+          )}
+        />
         <span
           className={style.WhatIDo__numbers}
-        >{`0${currentSlideIndex} / 06`}</span>
+        >{`0${currentSlideNumber} / 06`}</span>
       </p>
       <div className={style.WhatIDo__slideText}>
         <p className={style.WhatIDo__slideTitle}>
-          {slideContents[currentSlideIndex].title}
+          {slideContents[currentSlideNumber - 1].title}
         </p>
         <p className={style.WhatIDo__slideContent}>
-          {slideContents[currentSlideIndex].text}
+          {slideContents[currentSlideNumber - 1].text}
         </p>
       </div>
     </div>

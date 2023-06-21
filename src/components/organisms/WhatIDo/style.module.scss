@@ -49,14 +49,25 @@
       position: absolute;
       left: 0;
       display: block;
+      width: 0px;
       height: 1px;
       background-color: $font-color-blue;
+      // 8000ms間隔でスライドが変更、変更アニメーションが500ms、その差でプログレスバーが進行する
+      transition-duration: 7500ms;
+      transition-timing-function: linear;
+    }
+  }
 
-      // ここだけはkeyframeを使う
-      animation-name: progressAnimation;
-      animation-duration: 8000ms;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
+  .WhatIDo__progressBar--progress {
+    &::after {
+      width: 100px;
+    }
+  }
+
+  .WhatIDo__progressBar--reset {
+    &::after {
+      width: 0px;
+      transition-duration: 0s;
     }
   }
 
@@ -82,15 +93,5 @@
     font-size: 14px;
     line-height: 2;
     letter-spacing: 0.1em;
-  }
-}
-
-@keyframes progressAnimation {
-  0% {
-    width: 0px;
-  }
-
-  100% {
-    width: 100px;
   }
 }
