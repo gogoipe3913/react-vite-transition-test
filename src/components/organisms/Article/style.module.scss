@@ -1,0 +1,138 @@
+@import "../../../style/variables.scss";
+
+.Article {
+  font-family: "Marcellus";
+  color: $font-color-blue;
+
+  .Article__mainImage {
+    width: 100%;
+  }
+
+  .Article__linkToIndex {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    font-size: 14px;
+    color: $font-color-red;
+  }
+
+  .Article__titleVertical {
+    position: fixed;
+    top: 200px;
+    left: 100px;
+    line-height: 1;
+    color: $font-color-white;
+    transform-origin: bottom left;
+    transform: rotate(90deg);
+  }
+
+  .Article__titleVerticalBody {
+    font-size: 16px;
+  }
+
+  .Article__titleVerticalMonth {
+    margin-left: 24px;
+    font-size: 13px;
+  }
+
+  .Article__scrollIndicator {
+    position: absolute;
+    right: -28px;
+    bottom: 72px;
+    width: fit-content;
+    font-size: 18px;
+    color: $font-color-red;
+    letter-spacing: 0.03em;
+    transform: rotate(90deg);
+
+    &::after {
+      content: "";
+      display: inline-block;
+      margin-left: 8px;
+      width: 120px;
+      height: 1px;
+      background-color: $font-color-red;
+    }
+  }
+
+  .Article__content {
+    padding: 280px 100px 0;
+    display: flex;
+  }
+
+  .Article__leftColumn {
+    padding-top: 100px;
+    padding-left: 100px;
+    max-width: calc(50vw - 332px);
+  }
+
+  .Article__title {
+    font-size: 20px;
+    letter-spacing: 0.1em;
+  }
+
+  .Article__date {
+    font-size: 11px;
+    font-family: "Shippori Mincho";
+
+    &::before {
+      content: "";
+      margin-right: 8px;
+      display: inline-block;
+      width: 80px;
+      height: 1px;
+      background-color: $font-color-blue;
+    }
+  }
+
+  .Article__text {
+    margin-top: 60px;
+    font-size: 15px;
+    font-family: "Shippori Mincho";
+    line-height: 2;
+    letter-spacing: 0.1em;
+  }
+
+  .Article__tag {
+    margin-top: 100px;
+    color: $font-color-red;
+  }
+
+  .Article__tagBody {
+    display: block;
+
+    &::before {
+      content: "";
+      display: block;
+      margin-bottom: 40px;
+      width: 28px;
+      height: 1px;
+      background-color: $font-color-blue;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      margin-top: 40px;
+      width: 28px;
+      height: 1px;
+      background-color: $font-color-blue;
+    }
+  }
+
+  .Article__textEnglish {
+    margin-top: 60px;
+    font-size: 13px;
+    line-height: 2;
+    letter-spacing: 0.1em;
+  }
+
+  .Article__rightColumn {
+    flex-grow: 1;
+    margin-left: 80px;
+  }
+
+  .Article__imageFigure + .Article__imageFigure {
+    margin-top: 100px;
+  }
+}
