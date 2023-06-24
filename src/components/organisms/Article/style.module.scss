@@ -1,19 +1,77 @@
 @import "../../../style/variables.scss";
 
 .Article {
+  $timing-function-image: cubic-bezier(0.83, 0, 0.17, 1);
+
   font-family: "Marcellus";
   color: $font-color-blue;
 
+  .Article__topContainer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   .Article__mainImage {
     width: 100%;
+    object-fit: cover;
   }
 
   .Article__linkToIndex {
     position: fixed;
+    z-index: 2;
     top: 100px;
     left: 100px;
+    display: flex;
+    align-items: end;
+    width: 188px;
     font-size: 14px;
     color: $font-color-red;
+    line-height: 1;
+
+    &:hover {
+      color: $font-color-blue;
+
+      .Article__linkArrowAngle,
+      .Article__linkArrow {
+        background-color: $font-color-blue;
+      }
+
+      .Article__linkArrow {
+        width: 48px;
+      }
+    }
+  }
+
+  .Article__linkArrowAngle {
+    display: block;
+    width: 8px;
+    height: 1px;
+    background-color: $font-color-red;
+    transform-origin: top left;
+    transform: rotate(-45deg);
+
+    transition-duration: 0.3s;
+    transition-timing-function: $timing-function-image;
+  }
+
+  .Article__linkArrow {
+    display: block;
+    margin-left: -8px;
+    width: 92px;
+    height: 1px;
+    background-color: $font-color-red;
+
+    transition-duration: 0.3s;
+    transition-timing-function: $timing-function-image;
+  }
+
+  .Article__linkText {
+    margin-left: 8px;
+
+    transition-duration: 0.3s;
+    transition-timing-function: $timing-function-image;
   }
 
   .Article__titleVertical {
@@ -27,12 +85,12 @@
   }
 
   .Article__titleVerticalBody {
-    font-size: 16px;
+    font-size: 20px;
   }
 
   .Article__titleVerticalMonth {
     margin-left: 24px;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .Article__scrollIndicator {
@@ -55,15 +113,23 @@
     }
   }
 
+  .Article__contentWrapper {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    padding: 280px 200px 0;
+    width: 100%;
+    background-color: $font-color-white;
+  }
+
   .Article__content {
-    padding: 280px 100px 0;
     display: flex;
   }
 
   .Article__leftColumn {
-    padding-top: 100px;
-    padding-left: 100px;
-    max-width: calc(50vw - 332px);
+    padding-top: 180px;
+    max-width: calc(50vw - 560px);
+    min-width: 360px;
   }
 
   .Article__title {
@@ -74,6 +140,8 @@
   .Article__date {
     font-size: 11px;
     font-family: "Shippori Mincho";
+    text-align: right;
+    letter-spacing: 0.1em;
 
     &::before {
       content: "";
@@ -129,7 +197,7 @@
 
   .Article__rightColumn {
     flex-grow: 1;
-    margin-left: 80px;
+    margin-left: 100px;
   }
 
   .Article__imageFigure + .Article__imageFigure {
