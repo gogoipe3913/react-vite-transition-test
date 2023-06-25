@@ -11,6 +11,7 @@ import WhatIDo from "../organisms/WhatIDo";
 import Footer from "../organisms/Footer";
 import { ARTICLE_TYPE } from "../organisms/Article/data";
 import Article from "../organisms/Article";
+import ScrollTop from "../atoms/ScrollTop";
 
 const Templates: React.FC = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const Templates: React.FC = () => {
   return (
     <>
       <AnimatePresence mode="wait">
+        <ScrollTop />
         <Routes location={location} key={location.pathname}>
           <Route
             path="/"
