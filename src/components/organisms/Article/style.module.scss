@@ -97,20 +97,6 @@
     position: absolute;
     right: -28px;
     bottom: 72px;
-    width: fit-content;
-    font-size: 18px;
-    color: $font-color-red;
-    letter-spacing: 0.03em;
-    transform: rotate(90deg);
-
-    &::after {
-      content: "";
-      display: inline-block;
-      margin-left: 8px;
-      width: 120px;
-      height: 1px;
-      background-color: $font-color-red;
-    }
   }
 
   .Article__contentWrapper {

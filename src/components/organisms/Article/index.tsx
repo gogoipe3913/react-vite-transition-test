@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ARTICLE_TYPE, Articles } from "./data";
 import classNames from "classnames";
 import style from "./style.module.scss";
 import Footer from "../Footer";
+import { FadeInContainer } from "../../atoms/FadeInContainer";
+import ScrollIndicator from "../../atoms/ScrollIndicator";
+
+const PARALLAX_SCROLL_CONSTANT = 0.4;
 
 type ArticleProps = {
   articleType: ARTICLE_TYPE;
@@ -12,6 +16,22 @@ type ArticleProps = {
 
 const Article: React.FC<ArticleProps> = ({ articleType, className = "" }) => {
   const item = Articles[articleType];
+  const [scrollAmount, setScrollAmount] = useState(0);
+  const onScroll = () => {
+    setScrollAmount(
+      Math.max(
+        window.scrollY,
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      )
+    );
+  };
+
+  useEffect(() => {
+    document.addEventListener("scroll", onScroll);
+    return () => document.removeEventListener("scroll", onScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={classNames(style.Article, className)}>
@@ -22,8 +42,13 @@ const Article: React.FC<ArticleProps> = ({ articleType, className = "" }) => {
           src={item.mainImage.url}
           alt={item.mainImage.alt}
           className={style.Article__mainImage}
+          style={{
+            transform: `translateY(-${
+              scrollAmount * PARALLAX_SCROLL_CONSTANT
+            }px)`,
+          }}
         />
-        <p className={style.Article__scrollIndicator}>scroll</p>
+        <ScrollIndicator className={style.Article__scrollIndicator} />
       </div>
       <Link to="/" className={style.Article__linkToIndex}>
         <span className={style.Article__linkArrowAngle} />
@@ -37,21 +62,29 @@ const Article: React.FC<ArticleProps> = ({ articleType, className = "" }) => {
 
       <div className={style.Article__contentWrapper}>
         <div className={style.Article__content}>
-          <div className={style.Article__leftColumn}>
-            <p className={style.Article__title}>{item.title}</p>
-            <p className={style.Article__date}>{item.date}</p>
-            <p className={style.Article__text}>{item.text}</p>
-            <p className={style.Article__tag}>
-              <span />
-              <span className={style.Article__tagBody}>{item.tag}</span>
-              <span />
-            </p>
-            <p className={style.Article__textEnglish}>{item.textEnglish}</p>
-          </div>
+          <FadeInContainer>
+            <div className={style.Article__leftColumn}>
+              <p className={style.Article__title}>{item.title}</p>
+              <p className={style.Article__date}>{item.date}</p>
+              <p className={style.Article__text}>{item.text}</p>
+              <p className={style.Article__tag}>
+                <span />
+                <span className={style.Article__tagBody}>{item.tag}</span>
+                <span />
+              </p>
+              <p className={style.Article__textEnglish}>{item.textEnglish}</p>
+            </div>
+          </FadeInContainer>
           <ul className={style.Article__rightColumn}>
             {item.imageFigures.map((imageFigure, index) => (
               <li className={style.Article__imageFigure} key={index}>
-                <img width="100%" src={imageFigure.url} alt={imageFigure.alt} />
+                <FadeInContainer>
+                  <img
+                    width="100%"
+                    src={imageFigure.url}
+                    alt={imageFigure.alt}
+                  />
+                </FadeInContainer>
               </li>
             ))}
           </ul>
