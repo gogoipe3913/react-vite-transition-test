@@ -29,6 +29,10 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  overscroll-behavior: none;
+}
+a {
+  text-decoration: none;
 }
 a:not([class]) {
   text-decoration-skip-ink: auto;

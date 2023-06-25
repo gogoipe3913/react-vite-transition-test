@@ -8,22 +8,22 @@ import { slideContents } from "./data";
 
 const images = [
   {
-    src: "../../../../static/images/whatIDo/risograph.png",
+    src: "../../../../public/images/whatIDo/risograph.png",
   },
   {
-    src: "../../../../static/images/whatIDo/risograph.png",
+    src: "../../../../public/images/whatIDo/risograph.png",
   },
   {
-    src: "../../../../static/images/whatIDo/risograph.png",
+    src: "../../../../public/images/whatIDo/risograph.png",
   },
   {
-    src: "../../../../static/images/whatIDo/risograph.png",
+    src: "../../../../public/images/whatIDo/risograph.png",
   },
   {
-    src: "../../../../static/images/whatIDo/risograph.png",
+    src: "../../../../public/images/whatIDo/risograph.png",
   },
   {
-    src: "../../../../static/images/whatIDo/risograph.png",
+    src: "../../../../public/images/whatIDo/risograph.png",
   },
 ];
 

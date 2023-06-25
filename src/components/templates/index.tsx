@@ -1,8 +1,6 @@
 import React from "react";
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes, useLocation } from "react-router-dom";
-import ChildPageOne from "../organisms/childPageOne";
-import ChildPageTwo from "../organisms/childPageTwo";
 import MainLayout from "../organisms/MainLayout";
 import Top from "../organisms/Top";
 import About from "../organisms/About";
@@ -11,6 +9,9 @@ import IntervalText from "../organisms/IntervalText";
 import HamburgerMenu from "../organisms/HamburgerMenu";
 import WhatIDo from "../organisms/WhatIDo";
 import Footer from "../organisms/Footer";
+import { ARTICLE_TYPE } from "../organisms/Article/data";
+import Article from "../organisms/Article";
+import ScrollTop from "../atoms/ScrollTop";
 
 const Templates: React.FC = () => {
   const location = useLocation();
@@ -18,6 +19,7 @@ const Templates: React.FC = () => {
   return (
     <>
       <AnimatePresence mode="wait">
+        <ScrollTop />
         <Routes location={location} key={location.pathname}>
           <Route
             path="/"
@@ -36,18 +38,18 @@ const Templates: React.FC = () => {
             }
           />
           <Route
-            path="/one"
+            path={`/${ARTICLE_TYPE.ONE}`}
             element={
               <MainLayout>
-                <ChildPageOne />
+                <Article articleType={ARTICLE_TYPE.ONE} />
               </MainLayout>
             }
           />
           <Route
-            path="/two"
+            path={`/${ARTICLE_TYPE.TWO}`}
             element={
               <MainLayout>
-                <ChildPageTwo />
+                <Article articleType={ARTICLE_TYPE.TWO} />
               </MainLayout>
             }
           />

@@ -26,7 +26,7 @@ const lookBackItems: LookBackItemDataProps[] = [
   {
     title: "IN KYOTO LIFE",
     month: "February",
-    url: "../../../../static/images/inKyotoLife.png",
+    url: "../../../../public/images/inKyotoLife.png",
     alt: "IN KYOTO LIFEのサムネイル画像",
     isLife: true,
     isEvent: false,
@@ -34,7 +34,7 @@ const lookBackItems: LookBackItemDataProps[] = [
   {
     title: "BECOME DESIGN ENGINEER",
     month: "April",
-    url: "../../../../static/images/becomeDesignEngineer.png",
+    url: "../../../../public/images/becomeDesignEngineer.png",
     alt: "BECOME DESIGN ENGINEERのサムネイル画像",
     isLife: true,
     isEvent: false,
@@ -42,7 +42,7 @@ const lookBackItems: LookBackItemDataProps[] = [
   {
     title: "WATOTO",
     month: "June",
-    url: "../../../../static/images/watoto.png",
+    url: "../../../../public/images/watoto.png",
     alt: "WATOTOのサムネイル画像",
     isLife: false,
     isEvent: true,
@@ -50,7 +50,7 @@ const lookBackItems: LookBackItemDataProps[] = [
   {
     title: "BARISTA",
     month: "August",
-    url: "../../../../static/images/barista.png",
+    url: "../../../../public/images/barista.png",
     alt: "BARISTAのサムネイル画像",
     isLife: true,
     isEvent: false,
@@ -58,7 +58,7 @@ const lookBackItems: LookBackItemDataProps[] = [
   {
     title: "FIRST VISITING TO KUMAMOTO",
     month: "September",
-    url: "../../../../static/images/firstVisitingToKumamoto.png",
+    url: "../../../../public/images/firstVisitingToKumamoto.png",
     alt: "BECOME DESIGN ENGINEERのサムネイル画像",
     isLife: false,
     isEvent: true,
@@ -66,7 +66,7 @@ const lookBackItems: LookBackItemDataProps[] = [
   {
     title: "NEW LIFE",
     month: "December",
-    url: "../../../../static/images/newLife.png",
+    url: "../../../../public/images/newLife.png",
     alt: "NEW LIFEのサムネイル画像",
     isLife: true,
     isEvent: false,

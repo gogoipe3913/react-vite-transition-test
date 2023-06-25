@@ -10,7 +10,7 @@ const Top: React.FC = () => {
             muted={true}
             autoPlay={true}
             loop={true}
-            src="../../../../static/video/topVideo.mov"
+            src="../../../../public/video/topVideo.mov"
             className={style.Top__video}
           />
         </div>
