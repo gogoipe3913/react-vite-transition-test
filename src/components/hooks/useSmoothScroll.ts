@@ -18,7 +18,9 @@ const useSmoothScroll = () => {
     // インスタンスを生成
     const lenis = new Lenis({
       duration: 1.2, // アニメーションの継続時間
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // 特定の値の変化率を指定
+      easing: (time) =>
+        // https://easings.net/en#easeInOutCubic
+        Math.min(1, 1.001 - Math.pow(2, -10 * time)),
       direction: "vertical", // 方向
       gestureDirection: "vertical",
       smooth: true, // スムーススクロールの有効・無効を設定
