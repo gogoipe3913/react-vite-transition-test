@@ -3,7 +3,6 @@ import { useInView } from "react-intersection-observer";
 import style from "./style.module.scss";
 import classNames from "classnames";
 
-//TypeScriptの型定義 (今回は無視してOK)
 type FadeInContainerProps = {
   children: ReactNode;
 };
