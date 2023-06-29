@@ -62,19 +62,23 @@ const Article: React.FC<ArticleProps> = ({ articleType, className = "" }) => {
 
       <div className={style.Article__contentWrapper}>
         <div className={style.Article__content}>
-          <FadeInContainer>
-            <div className={style.Article__leftColumn}>
+          <div className={style.Article__leftColumn}>
+            <FadeInContainer>
               <p className={style.Article__title}>{item.title}</p>
               <p className={style.Article__date}>{item.date}</p>
               <p className={style.Article__text}>{item.text}</p>
+            </FadeInContainer>
+            <FadeInContainer>
               <p className={style.Article__tag}>
                 <span />
                 <span className={style.Article__tagBody}>{item.tag}</span>
                 <span />
               </p>
+            </FadeInContainer>
+            <FadeInContainer>
               <p className={style.Article__textEnglish}>{item.textEnglish}</p>
-            </div>
-          </FadeInContainer>
+            </FadeInContainer>
+          </div>
           <ul className={style.Article__rightColumn}>
             {item.imageFigures.map((imageFigure, index) => (
               <li className={style.Article__imageFigure} key={index}>
