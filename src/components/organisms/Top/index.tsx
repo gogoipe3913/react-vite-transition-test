@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./style.module.scss";
+import ScrollIndicator from "../../atoms/ScrollIndicator";
 
 const Top: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const Top: React.FC = () => {
         <span className={style.Top__title}>LOOK BACK ON LAST YEAR</span>
         <span className={style.Top__subTitle}>+ hello 2023, what i do?</span>
       </p>
-      <p className={style.Top__scrollIndicator}>scroll</p>
+      <ScrollIndicator className={style.Top__scrollIndicator} />
     </div>
   );
 };

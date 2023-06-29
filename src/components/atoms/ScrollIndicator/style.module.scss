@@ -3,7 +3,7 @@
 .ScrollIndicator {
   width: 174px;
 
-  font-size: 18px;
+  font-size: 14px;
   color: $font-color-red;
   letter-spacing: 0.03em;
   transform: rotate(90deg);
@@ -29,12 +29,16 @@
 @keyframes scrollIndicatorAnimation {
   0% {
     width: 0;
-    opacity: 0;
+    opacity: 1;
   }
 
   50% {
     left: 0;
     width: 120px;
+    opacity: 1;
+  }
+
+  70% {
     opacity: 1;
   }
 
