@@ -16,9 +16,9 @@ $timing-function-image: cubic-bezier(0.83, 0, 0.17, 1);
     flex-shrink: 0;
     position: sticky;
     top: 0;
-    padding-top: 48vh;
+    padding-top: 64vh;
     // sticky終了ポジションをメインカラムと合わせる
-    margin-bottom: 80px;
+    margin-bottom: 48px;
     min-width: 120px;
     height: fit-content;
   }
@@ -56,7 +56,7 @@ $timing-function-image: cubic-bezier(0.83, 0, 0.17, 1);
   .LookBack__mainColumn {
     margin-left: 160px;
     // ソートカラムのsticky開始ポジションをハンバーガーメニューと合わせる
-    padding-top: 80px;
+    padding-top: 48px;
   }
 
   .LookBack__items {
@@ -79,7 +79,7 @@ $timing-function-image: cubic-bezier(0.83, 0, 0.17, 1);
 
   .LookBack__item {
     margin-right: 80px;
-    margin-bottom: 80px;
+    margin-bottom: 56px;
     opacity: 1;
     transform: translateY(0px);
     transition-duration: 0.5s;
