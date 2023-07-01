@@ -3,7 +3,7 @@ import useSmoothScroll from "./components/hooks/useSmoothScroll";
 import Templates from "./components/templates";
 
 function App() {
-  useSmoothScroll();
+  // useSmoothScroll();
 
   return <Templates />;
 }

@@ -33,45 +33,56 @@ type WhatIDoProps = {
 };
 
 const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
-  const [currentSlideNumber, setCurrentSlideNumber] = useState(1);
-  const [isProgress, setIsProgress] = useState(false);
-  const [isReset, setIsReset] = useState(false);
-  const sliderRef = useRef<Slider>(null);
+  const AUTO_SLIDE_INTERVAL_SECOND = 8000; // 8000msで自動スライド
+  const SET_INTERVAL_SECOND = 10; // 10ms毎にプログレスバーの幅を再計算
+  const PROGRESS_MAX_WIDTH = 100; // 100pxが最大幅
+  const [currentSlideNumber, setCurrentSlideNumber] = useState(1); // 枚数中のcurrent
+  const [currentSlideSerialNumber, setCurrentSlideSerialNumber] = useState(1); // 通し番号中のcurrent
+  const [progressBarCurrentWidth, setProgressBarCurrentWidth] = useState(0);
+  const [slider, setSlider] = useState<Slider | null>(null);
   const settings: Settings = {
+    initialSlide: 0,
     dots: false,
-    autoplay: true,
+    autoplay: false,
     focusOnSelect: false,
     speed: 500,
-    autoplaySpeed: 8000,
     waitForAnimate: true,
     slidesToShow: 3,
-    beforeChange(currentIndex) {
-      setIsReset(true);
-      setIsProgress(false);
-
-      // 表示するのは1から
-      const currentNumber = currentIndex + 2;
-
-      if (currentNumber < 7) {
-        setCurrentSlideNumber(currentNumber);
-      } else {
-        setCurrentSlideNumber(
-          currentNumber - 6 * Math.trunc(currentNumber / 6)
-        );
-      }
-    },
-    afterChange() {
-      setIsReset(false);
-      setIsProgress(true);
-    },
   };
 
   useEffect(() => {
-    setIsProgress(true);
-  }, []);
+    let width = 0;
+    const interval = setInterval(() => {
+      if (width >= AUTO_SLIDE_INTERVAL_SECOND / SET_INTERVAL_SECOND) {
+        setProgressBarCurrentWidth(0);
+        width = 0;
+        clearInterval(interval);
+        setCurrentSlideSerialNumber(currentSlideSerialNumber + 1);
+        if (currentSlideNumber < 6) {
+          setCurrentSlideNumber(currentSlideNumber + 1);
+        } else {
+          setCurrentSlideNumber(
+            currentSlideNumber - 5 * Math.trunc(currentSlideNumber / 6)
+          );
+        }
+      } else {
+        width++;
+        setProgressBarCurrentWidth(
+          width /
+            (AUTO_SLIDE_INTERVAL_SECOND /
+              SET_INTERVAL_SECOND /
+              PROGRESS_MAX_WIDTH)
+        );
+      }
+    }, SET_INTERVAL_SECOND);
+
+    if (slider) {
+      slider.slickGoTo(currentSlideSerialNumber - 1);
+    }
+  }, [currentSlideNumber]);
 
   return (
-    <div className={classNames(style.WhatIDo, className)}>
+    <div id="WhatIDo" className={classNames(style.WhatIDo, className)}>
       <FadeInContainer>
         <p className={style.WhatIDo__title}>
           <span className={style.WhatIDo__titleRow}>+ Hello</span>
@@ -79,22 +90,36 @@ const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
           <span className={style.WhatIDo__titleRow}>What I do?</span>
         </p>
         <div className={style.WhatIDo__sliderWrapper}>
-          <Slider ref={sliderRef} {...settings}>
+          <Slider
+            ref={(_slider) => {
+              setSlider(_slider);
+            }}
+            {...settings}
+          >
             {images.map((img, index) => (
-              <div key={index} className={style.WhatIDo__sliderContent}>
+              <div
+                key={index}
+                className={classNames(
+                  style.WhatIDo__sliderContent,
+                  currentSlideNumber === index ||
+                    (currentSlideNumber === 6 && index === 0)
+                    ? style["WhatIDo__sliderContent--current"]
+                    : ""
+                )}
+              >
                 <img src={img.src} alt="picture" />
               </div>
             ))}
           </Slider>
         </div>
         <p className={style.WhatIDo__currentSlideIndicator}>
-          <span
-            className={classNames(
-              style.WhatIDo__progressBar,
-              isProgress ? style["WhatIDo__progressBar--progress"] : "",
-              isReset ? style["WhatIDo__progressBar--reset"] : ""
-            )}
-          />
+          <span className={style.WhatIDo__progressBars}>
+            <span className={style.WhatIDo__progressBarBase} />
+            <span
+              className={style.WhatIDo__progressBarCurrent}
+              style={{ width: `${progressBarCurrentWidth}px` }}
+            />
+          </span>
           <span
             className={style.WhatIDo__numbers}
           >{`0${currentSlideNumber} / 06`}</span>

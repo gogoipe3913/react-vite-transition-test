@@ -4,7 +4,7 @@ import ScrollIndicator from "../../atoms/ScrollIndicator";
 
 const Top: React.FC = () => {
   return (
-    <div className={style.Top}>
+    <div id="Top" className={style.Top}>
       <div className={style.Top__videoWrapper}>
         <p className={style.Top__titleBox}>
           <span className={style.Top__title}>LOOKBACK ON LASTYEAR</span>
