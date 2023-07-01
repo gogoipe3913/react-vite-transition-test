@@ -39,7 +39,7 @@
       width: calc(100% - 16px);
       height: 100%;
       background-color: #000;
-      opacity: 0.4;
+      opacity: 0.7;
       transition-duration: 0.2s;
     }
 
@@ -48,6 +48,20 @@
         opacity: 0;
       }
     }
+  }
+
+  .WhatIDo__sliderContentButton {
+    position: fixed;
+    z-index: 30;
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    border: 1px solid $font-color-white;
+    color: $font-color-white;
+    text-align: center;
+    line-height: 80px;
+    cursor: none;
   }
 
   .WhatIDo__currentSlideIndicator {

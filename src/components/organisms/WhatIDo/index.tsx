@@ -36,6 +36,14 @@ const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
   const AUTO_SLIDE_INTERVAL_SECOND = 8000; // 8000msで自動スライド
   const SET_INTERVAL_SECOND = 10; // 10ms毎にプログレスバーの幅を再計算
   const PROGRESS_MAX_WIDTH = 100; // 100pxが最大幅
+
+  // const [isMouseOverPrev, setIsMouseOverPrev] = useState(false);
+  // const [isMouseOverNext, setIsMouseOverNext] = useState(false);
+  // const prevButtonRef = useRef<HTMLDivElement | null>(null);
+  // const nextButtonRef = useRef<HTMLDivElement | null>(null);
+
+  const [intervalId, setIntervalId] = useState(0);
+
   const [currentSlideNumber, setCurrentSlideNumber] = useState(1); // 枚数中のcurrent
   const [currentSlideSerialNumber, setCurrentSlideSerialNumber] = useState(1); // 通し番号中のcurrent
   const [progressBarCurrentWidth, setProgressBarCurrentWidth] = useState(0);
@@ -52,29 +60,33 @@ const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
 
   useEffect(() => {
     let width = 0;
-    const interval = setInterval(() => {
-      if (width >= AUTO_SLIDE_INTERVAL_SECOND / SET_INTERVAL_SECOND) {
-        setProgressBarCurrentWidth(0);
-        width = 0;
-        clearInterval(interval);
-        setCurrentSlideSerialNumber(currentSlideSerialNumber + 1);
-        if (currentSlideNumber < 6) {
-          setCurrentSlideNumber(currentSlideNumber + 1);
+    // 前にuseEffectしたタイミングのintervalは停止しておく
+    clearInterval(intervalId);
+
+    setIntervalId(
+      setInterval(() => {
+        if (width >= AUTO_SLIDE_INTERVAL_SECOND / SET_INTERVAL_SECOND) {
+          setProgressBarCurrentWidth(0);
+          width = 0;
+          setCurrentSlideSerialNumber(currentSlideSerialNumber + 1);
+          if (currentSlideNumber < 6) {
+            setCurrentSlideNumber(currentSlideNumber + 1);
+          } else {
+            setCurrentSlideNumber(
+              currentSlideNumber - 5 * Math.trunc(currentSlideNumber / 6)
+            );
+          }
         } else {
-          setCurrentSlideNumber(
-            currentSlideNumber - 5 * Math.trunc(currentSlideNumber / 6)
+          width++;
+          setProgressBarCurrentWidth(
+            width /
+              (AUTO_SLIDE_INTERVAL_SECOND /
+                SET_INTERVAL_SECOND /
+                PROGRESS_MAX_WIDTH)
           );
         }
-      } else {
-        width++;
-        setProgressBarCurrentWidth(
-          width /
-            (AUTO_SLIDE_INTERVAL_SECOND /
-              SET_INTERVAL_SECOND /
-              PROGRESS_MAX_WIDTH)
-        );
-      }
-    }, SET_INTERVAL_SECOND);
+      }, SET_INTERVAL_SECOND)
+    );
 
     if (slider) {
       slider.slickGoTo(currentSlideSerialNumber - 1);
@@ -99,6 +111,68 @@ const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
             {images.map((img, index) => (
               <div
                 key={index}
+                // onClick={() => {
+                //   if (isMouseOverPrev) {
+                //     clearInterval(intervalId);
+                //     setCurrentSlideSerialNumber(currentSlideSerialNumber - 1);
+                //     if (currentSlideNumber > 1) {
+                //       setCurrentSlideNumber(currentSlideNumber - 1);
+                //     } else {
+                //       setCurrentSlideNumber(currentSlideNumber + 5);
+                //     }
+                //   }
+
+                //   if (isMouseOverNext) {
+                //     clearInterval(intervalId);
+                //     setCurrentSlideSerialNumber(currentSlideSerialNumber + 1);
+                //     if (currentSlideNumber < 6) {
+                //       setCurrentSlideNumber(currentSlideNumber + 1);
+                //     } else {
+                //       setCurrentSlideNumber(currentSlideNumber - 5);
+                //     }
+                //   }
+                // }}
+                // onMouseEnter={() => {
+                //   if (currentSlideNumber - 1 === index && !isMouseOverPrev) {
+                //     setIsMouseOverPrev(true);
+                //   }
+                //   if (currentSlideNumber + 1 === index && !isMouseOverNext) {
+                //     setIsMouseOverNext(true);
+                //   }
+                //   document.body.style.cursor = "none";
+                // }}
+                // onMouseMove={(event) => {
+                //   const top = event.clientY;
+                //   const left = event.clientX;
+
+                //   if (
+                //     isMouseOverPrev &&
+                //     prevButtonRef &&
+                //     prevButtonRef.current
+                //   ) {
+                //     prevButtonRef.current.style.top = `${top}px`;
+                //     prevButtonRef.current.style.left = `${left}px`;
+                //   }
+
+                //   if (
+                //     isMouseOverNext &&
+                //     nextButtonRef &&
+                //     nextButtonRef.current
+                //   ) {
+                //     nextButtonRef.current.style.top = `${top}px`;
+                //     nextButtonRef.current.style.left = `${left}px`;
+                //   }
+                // }}
+                // onMouseLeave={() => {
+                //   if (currentSlideNumber - 1 === index && isMouseOverPrev) {
+                //     setIsMouseOverPrev(false);
+                //   }
+                //   if (currentSlideNumber + 1 === index && isMouseOverNext) {
+                //     setIsMouseOverNext(false);
+                //   }
+
+                //   document.body.style.cursor = "default";
+                // }}
                 className={classNames(
                   style.WhatIDo__sliderContent,
                   currentSlideNumber === index ||
@@ -111,6 +185,24 @@ const WhatIDo: React.FC<WhatIDoProps> = ({ className = "" }) => {
               </div>
             ))}
           </Slider>
+          {/* {isMouseOverPrev ? (
+            // HTMLButtonElementだと表示がうまくいかないのでdivで処理
+            <div
+              ref={prevButtonRef}
+              className={style.WhatIDo__sliderContentButton}
+            >
+              <span>Prev</span>
+            </div>
+          ) : null}
+          {isMouseOverNext ? (
+            // HTMLButtonElementだと表示がうまくいかないのでdivで処理
+            <div
+              ref={nextButtonRef}
+              className={style.WhatIDo__sliderContentButton}
+            >
+              <span>Next</span>
+            </div>
+          ) : null} */}
         </div>
         <p className={style.WhatIDo__currentSlideIndicator}>
           <span className={style.WhatIDo__progressBars}>
