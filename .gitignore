@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Large size file
+public/video/topVideoPattern2.mov
+public/video/topVideoPattern3.mp4
