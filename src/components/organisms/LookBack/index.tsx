@@ -207,7 +207,7 @@ const LookBack: React.FC<LookBackProps> = ({ className = "" }) => {
 
   return (
     <>
-      <div className={classNames(style.LookBack, className)}>
+      <div id="LookBack" className={classNames(style.LookBack, className)}>
         <div className={style.LookBack__sideColumn}>
           <p className={style.LookBack__sideColumnTitle}>LOOK BACK</p>
           <ul className={style.LookBack__sortItems}>

@@ -6,7 +6,7 @@ import Top from "../organisms/Top";
 import About from "../organisms/About";
 import LookBack from "../organisms/LookBack";
 import IntervalText from "../organisms/IntervalText";
-import HamburgerMenu from "../organisms/HamburgerMenu";
+import Menu from "../organisms/Menu";
 import WhatIDo from "../organisms/WhatIDo";
 import Footer from "../organisms/Footer";
 import { ARTICLE_TYPE } from "../organisms/Article/data";
@@ -26,7 +26,7 @@ const Templates: React.FC = () => {
             element={
               <MainLayout>
                 <>
-                  <HamburgerMenu />
+                  <Menu />
                   <Top />
                   <About />
                   <LookBack />

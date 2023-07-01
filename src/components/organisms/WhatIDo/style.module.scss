@@ -1,10 +1,12 @@
 @import "../../../style/variables.scss";
 
 .WhatIDo {
+  $timing-function-image: cubic-bezier(0.83, 0, 0.17, 1);
+
   // LookBackのマウス実装に対応して全ページでzindexを付与する必要がある
   position: relative;
   z-index: 20;
-  padding: 0 100px;
+  padding: 100px 100px 0;
   width: 100%;
   overflow: hidden;
   font-family: "Marcellus";
@@ -26,7 +28,26 @@
   }
 
   .WhatIDo__sliderContent {
+    position: relative;
     padding: 0 8px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 8px;
+      width: calc(100% - 16px);
+      height: 100%;
+      background-color: #000;
+      opacity: 0.4;
+      transition-duration: 0.2s;
+    }
+
+    &--current {
+      &::after {
+        opacity: 0;
+      }
+    }
   }
 
   .WhatIDo__currentSlideIndicator {
@@ -37,38 +58,26 @@
     color: $font-color-blue;
   }
 
-  .WhatIDo__progressBar {
+  .WhatIDo__progressBars {
+    position: relative;
+    display: block;
+    width: 100px;
+  }
+
+  .WhatIDo__progressBarBase {
     position: relative;
     display: block;
     width: 100px;
     height: 1px;
     background-color: #dfdfdf;
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      display: block;
-      width: 0px;
-      height: 1px;
-      background-color: $font-color-blue;
-      // 8000ms間隔でスライドが変更、変更アニメーションが500ms、その差でプログレスバーが進行する
-      transition-duration: 7500ms;
-      transition-timing-function: linear;
-    }
   }
 
-  .WhatIDo__progressBar--progress {
-    &::after {
-      width: 100px;
-    }
-  }
-
-  .WhatIDo__progressBar--reset {
-    &::after {
-      width: 0px;
-      transition-duration: 0s;
-    }
+  .WhatIDo__progressBarCurrent {
+    position: relative;
+    display: block;
+    margin-top: -1px;
+    height: 1px;
+    background-color: $font-color-blue;
   }
 
   .WhatIDo__numbers {
